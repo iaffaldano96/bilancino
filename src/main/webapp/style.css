@@ -10,4 +10,18 @@ and open the template in the editor.
 
 #autenticazione{
     float: right;
+    font-size: 30px;
+}
+#pulsanti{
+    margin: auto;
+    width: 480px;
+    height: 40px;    
+}
+#pulsanti input{
+    border-radius: 35px;
+    font-size: 25px;  
+}
+h1{
+    font-size: 35px;
+    color: darkmagenta
 }

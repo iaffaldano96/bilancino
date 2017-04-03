@@ -15,10 +15,15 @@
     </head>
     <body>
         <div id="autenticazione">
-            <a href="Login.html">Login</a>
-            <a href="Registrazione.html">Registrazione</a>
+            <a href="login.jsp">Login</a>
+            <a href="registrazione.jsp">Registrazione</a>
         </div>
-        <h1 style="text-align: center">Bilancino personale</h1>
-        
+        <h1 style="text-align: center">Bilancino Personale</h1>
+        <br><br><br><br><br><br><br><br><br><br>
+        <div id="pulsanti">
+            <input type="button"  id="visualizza" value="Visualizza le Spese">
+            <input type="button"  id="inserisci" value="Inserisci una Spesa">
+        </div>
+
     </body>
 </html>

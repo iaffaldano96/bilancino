@@ -20,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -30,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = Spesa.FIND_BY_ID,
             query = "select s from Spesa s where s.id= :id_spesa"),
     @NamedQuery(name = Spesa.FIND_BY_USER,
-            query = "select s from Spesa s where s.utente= :id_utente"),
+            query = "select s from Spesa s where s.utente= :utente"),
     @NamedQuery(name = Spesa.FIND_BY_CATEGORIA,
             query = "select s from Spesa s where s.categoria= :categoria"),
     @NamedQuery(name = Spesa.FIND_BY_DATA,
@@ -38,7 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 })
 
 @Entity
-@Table(name = "spesa")
 public class Spesa implements Serializable {
 
     public static final String FIND_BY_USER = "Spesa.findByUser";

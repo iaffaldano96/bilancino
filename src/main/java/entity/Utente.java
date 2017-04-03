@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 })
 
 @Entity
-@Table(name="utente")
 public class Utente implements Serializable{
     
     public static final String FIND_ALL="Utente.findall";

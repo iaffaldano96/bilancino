@@ -34,8 +34,8 @@ public class SpesaService {
         return em.createNamedQuery(Spesa.FIND_BY_ID, Spesa.class).setParameter("id_spesa", id).getSingleResult();
     }
     
-    public List<Spesa> findByUser(Long id){
-        return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("id_utente", id).getResultList();
+    public List<Spesa> findByUser(Utente u){
+        return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("utente", u).getResultList();
     }
     
     public List<Spesa> findByCategoria(String cate){

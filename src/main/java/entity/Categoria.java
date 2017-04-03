@@ -24,7 +24,6 @@ import javax.persistence.Table;
             query = "SELECT c from Categoria c order by c.categoria")
 })
 @Entity
-@Table(name="categoria")
 public class Categoria implements Serializable{
 
     public static final String FIND_BY_ID ="Categoria.findById";
