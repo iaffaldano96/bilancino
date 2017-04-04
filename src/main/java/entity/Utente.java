@@ -27,6 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
             query = "SELECT u from Utente u order by u.usr"),
     @NamedQuery(name=Utente.FIND_BY_USER_PSW,
             query = "SELECT u from Utente u WHERE u.usr= :usr and u.psw= :psw"),
+    @NamedQuery(name=Utente.FIND_USER,
+            query = "SELECT u from Utente u WHERE u.usr= :usr"),
     @NamedQuery(name=Utente.FIND_BY_ID,
             query = "SELECT u from Utente u WHERE u.id= :id_utente")    
 })
@@ -36,6 +38,7 @@ public class Utente implements Serializable{
     
     public static final String FIND_ALL="Utente.findall";
     public static final String FIND_BY_USER_PSW="Utente.findByUserPsw";
+    public static final String FIND_USER="Utente.findUser";
     public static final String FIND_BY_ID="Utente.findById";
 
     @Id

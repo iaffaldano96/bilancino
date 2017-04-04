@@ -18,12 +18,18 @@
             <a href="login.jsp">Login</a>
             <a href="registrazione.jsp">Registrazione</a>
         </div>
-        <h1 style="text-align: center">Bilancino Personale</h1>
+        <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
         <div id="pulsanti">
-            <input type="button"  id="visualizza" value="Visualizza le Spese">
-            <input type="button"  id="inserisci" value="Inserisci una Spesa">
+            <form action="visualizzaSpese.jsp">
+                <input type="submit"  id="visualizza" value="Visualizza le Spese">
+            </form>
+            <form action="creaSpesa.jsp">
+                <input type="submit"  id="inserisci" value="Inserisci una Spesa">
+            </form>
         </div>
+
+
 
     </body>
 </html>

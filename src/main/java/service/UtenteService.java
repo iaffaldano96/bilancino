@@ -48,6 +48,16 @@ public class UtenteService {
         }
         return result;
     }
+    
+    public Utente findUser(String usr){
+        Utente result= null;
+        try {
+            result = em.createNamedQuery(Utente.FIND_USER, Utente.class)
+                    .setParameter("usr", usr).getSingleResult();
+        } catch (NoResultException ex) { // errore ingnorato dato che non fa niente
+        }
+        return result;
+    }
 
     public void remove(Utente u) {        
         em.remove(u);

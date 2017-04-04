@@ -5,6 +5,8 @@
  */
 package presentation;
 
+import entity.Categoria;
+import entity.Spesa;
 import entity.Utente;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -14,57 +16,55 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import service.LoggedFilter;
-import service.UtenteService;
+import service.SpesaService;
 
 /**
  *
  * @author tss
  */
-@WebServlet(urlPatterns = "/login")
-public class UtentiLoginServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/crea")
+public class SpesaCreaServlet extends HttpServlet {
 
     @Inject
-    UtenteService utenteService;
-
+    SpesaService spesaService;
+    
     @Inject
     LoggedFilter utenteLogged;
-    
+
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("init()...");
+        System.out.println("init().. crea..");
     }
 
-    // lo fa quando mandi un'altra richiesta
     @Override
     public void destroy() {
         super.destroy(); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("destroy()...");
+        System.out.println("destroy().. crea..");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String user = req.getParameter("usr");
-        String pass = req.getParameter("psw");
+        String imp = req.getParameter("importo");
+        double importo = Double.parseDouble(imp);
 
-        if (user == null || pass == null) {
-            System.out.println("Dati nulli");
-            resp.sendRedirect("login.jsp");
+        String descri = req.getParameter("descri");
+
+        String cate = req.getParameter("cate");
+
+        if (imp == null || cate == null) {
+            System.out.println("Dati vuoti");
+            resp.sendRedirect("creaSpesa.jsp");
         } else {
-
-            Utente find = utenteService.findByUserEPsw(user, pass);
-
-            if (find == null) {
-                System.out.println("Utente non trovato");
-                resp.sendRedirect("login.jsp");
-            }
             
-            utenteLogged.setUtenteLogged(find);
-            System.out.println("utente va bene...  " + utenteLogged.getUtenteLogged());
-
-            resp.sendRedirect("home.jsp");
-            System.out.println("doPostLogin va bene...  " + user + " - " + pass);
+            Categoria catte =new Categoria(cate);
+            Spesa spe = new Spesa(importo, catte,utenteLogged.getUtenteLogged(),descri);
+            spesaService.save(spe);
+            System.out.println("doPostRegistrazione va bene...  " + importo + " - " + cate + " - "+ utenteLogged.getUtenteLogged()+ " - "+descri);
+            resp.sendRedirect("creaSpesa.jsp");
         }
+
     }
+
 }

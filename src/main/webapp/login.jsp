@@ -18,7 +18,7 @@
             <a href="login.jsp">Login</a>
             <a href="registrazione.jsp">Registrazione</a>
         </div>
-        <h1 style="text-align: center">Bilancino Personale</h1>
+        <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
 
         <h2>Inserisci i dati </h2>

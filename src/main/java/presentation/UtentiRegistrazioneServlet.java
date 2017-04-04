@@ -44,11 +44,19 @@ public class UtentiRegistrazioneServlet extends HttpServlet {
         String user = req.getParameter("usr");
         String pass = req.getParameter("psw");
         String email = req.getParameter("email");
-        System.out.println("...  " + user + " - " + pass + " - " + email);
+
         if (user == null || pass == null || email == null) {
-            System.out.println("Utente nullo");
+            System.out.println("Dati vuoti");
             resp.sendRedirect("registrazione.jsp");
         } else {
+
+            Utente find = utenteService.findUser(user);
+
+            if (find != null) {
+                System.out.println("Username già esistente...");
+                resp.sendRedirect("registrazione.jsp");
+            }
+
             Utente ute = new Utente(user, pass, email);
             utenteService.save(ute);
             System.out.println("doPostRegistrazione va bene...  " + user + " - " + pass + " - " + email);
