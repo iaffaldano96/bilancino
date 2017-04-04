@@ -25,7 +25,7 @@
             </form>
             <br><br>
             <form action="creaSpesa.jsp">
-                <input type="button"  id="inserisci" value="Inserisci una Spesa">
+                <input type="submit"  id="inserisci" value="Inserisci una Spesa">
             </form>
         </div>
 

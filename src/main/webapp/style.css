@@ -33,3 +33,18 @@ h1{
     margin: auto;
     font-size: 20px
 }
+
+#conteVisuSpese{
+    font-size: 20px;
+    margin: auto;
+}
+#conteVisuSpese table{
+    margin: auto;
+    border-spacing: 10px;        
+}    
+#conteVisuSpese table td{
+    border: solid 1px lightgrey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px grey;
+    text-align: center
+}    
