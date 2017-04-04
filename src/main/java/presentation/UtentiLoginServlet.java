@@ -28,7 +28,7 @@ public class UtentiLoginServlet extends HttpServlet {
 
     @Inject
     LoggedFilter utenteLogged;
-    
+
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
@@ -48,7 +48,7 @@ public class UtentiLoginServlet extends HttpServlet {
         String user = req.getParameter("usr");
         String pass = req.getParameter("psw");
 
-        if (user == null || pass == null) {
+        if (user.equals("") || pass.equals("")) {
             System.out.println("Dati nulli");
             resp.sendRedirect("login.jsp");
         } else {
@@ -58,13 +58,14 @@ public class UtentiLoginServlet extends HttpServlet {
             if (find == null) {
                 System.out.println("Utente non trovato");
                 resp.sendRedirect("login.jsp");
-            }
-            
-            utenteLogged.setUtenteLogged(find);
-            System.out.println("utente va bene...  " + utenteLogged.getUtenteLogged());
+            } else {
 
-            resp.sendRedirect("home.jsp");
-            System.out.println("doPostLogin va bene...  " + user + " - " + pass);
+                utenteLogged.setUtenteLogged(find);
+                System.out.println("utente va bene...  " + utenteLogged.getUtenteLogged());
+
+                resp.sendRedirect("home.jsp");
+                System.out.println("doPostLogin va bene...  " + user + " - " + pass);
+            }
         }
     }
 }

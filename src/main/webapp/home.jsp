@@ -15,8 +15,7 @@
     </head>
     <body>
         <div id="autenticazione">
-            <a href="login.jsp">Login</a>
-            <a href="registrazione.jsp">Registrazione</a>
+             <a href="index.html">Logout</a>
         </div>
         <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
@@ -24,12 +23,11 @@
             <form action="visualizzaSpese.jsp">
                 <input type="submit"  id="visualizza" value="Visualizza le Spese">
             </form>
+            <br><br>
             <form action="creaSpesa.jsp">
-                <input type="submit"  id="inserisci" value="Inserisci una Spesa">
+                <input type="button"  id="inserisci" value="Inserisci una Spesa">
             </form>
         </div>
-
-
 
     </body>
 </html>

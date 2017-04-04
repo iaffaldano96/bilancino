@@ -34,7 +34,7 @@
             <input type="text" id="email" name="email"><br><br>
 
             <input type="button" id="cmdAnn" value="Annulla">   
-            <input type="submit" id="cmdSalva" value="Salva">  
+            <input type="submit" id="cmdSalva" value="Registrati">  
         </form>
         <script>
 

@@ -7,7 +7,6 @@ package presentation;
 
 import entity.Categoria;
 import entity.Spesa;
-import entity.Utente;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -53,16 +52,17 @@ public class SpesaCreaServlet extends HttpServlet {
 
         String cate = req.getParameter("cate");
 
-        if (imp == null || cate == null) {
+        if (imp.equals("") || cate.equals("")) {
             System.out.println("Dati vuoti");
             resp.sendRedirect("creaSpesa.jsp");
         } else {
-            
+            if(descri.equals(""))
+                descri="-";
             Categoria catte =new Categoria(cate);
             Spesa spe = new Spesa(importo, catte,utenteLogged.getUtenteLogged(),descri);
             spesaService.save(spe);
             System.out.println("doPostRegistrazione va bene...  " + importo + " - " + cate + " - "+ utenteLogged.getUtenteLogged()+ " - "+descri);
-            resp.sendRedirect("creaSpesa.jsp");
+            resp.sendRedirect("creaSpesa.jsp");            
         }
 
     }

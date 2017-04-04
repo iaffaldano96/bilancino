@@ -45,7 +45,7 @@ public class UtentiRegistrazioneServlet extends HttpServlet {
         String pass = req.getParameter("psw");
         String email = req.getParameter("email");
 
-        if (user == null || pass == null || email == null) {
+        if (user.equals("") || pass.equals("") || email.equals("")) {
             System.out.println("Dati vuoti");
             resp.sendRedirect("registrazione.jsp");
         } else {

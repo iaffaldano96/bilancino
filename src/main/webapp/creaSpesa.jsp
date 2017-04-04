@@ -16,41 +16,41 @@
     </head>
     <body>
         <div id="autenticazione">
-            <a href="login.jsp">Login</a>
-            <a href="registrazione.jsp">Registrazione</a>
+            <a href="index.html">Logout</a>            
         </div>
         <h1> Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
 
+        <div id="conteCreaSpesa">
+            <h2>Inserisci la spesa </h2>
 
-        <h2>Inserisci la spesa </h2>
+            <form action="crea" method="POST">
+                <label for="cate">Categoria</label> &nbsp;
 
-        <form action="crea" method="POST">
-            <label for="cate">Categoria</label> &nbsp;
-            
-            <select id="cate" name="cate">                     
-                <c:forEach items="${categoriaService.findAll()}" var="cate">                                   
-                    <option><c:out value="${cate.categoria}"/></option>                                                    
-                </c:forEach>
-            </select>
+                <select id="cate" name="cate">                     
+                    <c:forEach items="${categoriaService.findAll()}" var="cate">                                   
+                        <option><c:out value="${cate.categoria}"/></option>                                                    
+                    </c:forEach>
+                </select>
 
-            <br><br>
-            
-            <label for="importo">Importo</label>&nbsp;&nbsp;          
-            <input type="text" id="importo" name="importo"><br><br>
+                <br><br>
 
-            <label for="descri">Descrizione</label>&nbsp;&nbsp;
-            <textarea id="descri" name="descri"></textarea><br><br>
+                <label for="importo">Importo</label>&nbsp;&nbsp;          
+                <input type="text" id="importo" name="importo"><br><br>
 
-            <input type="button" id="cmdAnn" value="Annulla">   
-            <input type="submit" id="cmdSalva" value="Salva">  
-        </form>
+                <label for="descri">Descrizione</label>&nbsp;&nbsp;
+                <textarea id="descri" name="descri"></textarea><br><br>
+
+                <input type="button" id="cmdAnn" value="Annulla">   
+                <input type="submit" id="cmdSalva" value="Salva">  
+            </form>
+        </div>
         <script>
 
             $("#cmdAnn").click(function () {
                 var s = confirm("Sicuro di voler cancellare?");
-                if (s) {  
-                    //$("#cate option").replaceWith("Scegli la categoria");
+                if (s) {
+                    //$("#cate option").val("0");
                     $("#importo").val("");
                     $("#descri").val("");
                 }

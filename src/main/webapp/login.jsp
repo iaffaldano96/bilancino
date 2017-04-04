@@ -31,18 +31,19 @@
             <input type="password" name="psw" id="psw"><br><br>
 
             <input type="button" id="cmdAnn" value="Annulla">   
-            <input type="submit" id="cmdSalva" value="Salva">  
+            <input type="submit" id="cmdSalva" value="Login">  
         </form>
         <script>
 
-            $("#cmdAnn").click(function() {
-                var s=confirm("Sicuro di voler cancellare?");
-                if(s){
+            $("#cmdAnn").click(function () {
+                var s = confirm("Sicuro di voler cancellare?");
+                if (s) {
                     $("#usr").val("");
                     $("#psw").val("");
-                }                    
-            });
-
+                }
+                
+            });                       
+            
         </script>   
     </body>
 </html>

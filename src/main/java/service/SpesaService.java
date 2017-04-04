@@ -10,6 +10,7 @@ import entity.Utente;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +24,9 @@ import javax.persistence.PersistenceContext;
 @Named("spesaService")
 public class SpesaService {
     
+    @Inject
+    LoggedFilter utenteLogged;
+    
     @PersistenceContext
     private EntityManager em;
     
@@ -34,7 +38,8 @@ public class SpesaService {
         return em.createNamedQuery(Spesa.FIND_BY_ID, Spesa.class).setParameter("id_spesa", id).getSingleResult();
     }
     
-    public List<Spesa> findByUser(Utente u){
+    public List<Spesa> findByUser(){
+        Utente u=utenteLogged.getUtenteLogged();
         return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("utente", u).getResultList();
     }
     

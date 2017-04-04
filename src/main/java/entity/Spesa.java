@@ -75,12 +75,6 @@ public class Spesa implements Serializable {
         this.descrizione = descrizione;
     }
 
-    public Spesa(double importo, Categoria categoria, Utente utente) {
-        this.importo = importo;
-        this.categoria = categoria;
-        this.utente = utente;
-    }
-
     public Long getId() {
         return id;
     }
