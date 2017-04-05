@@ -21,7 +21,8 @@ import service.LoggedFilter;
 import service.SpesaService;
 
 /**
- *ta (categ)..Salute
+ * ta (categ)..Salute
+ *
  * @author tssta (categ)..Salute
  */
 @WebServlet(urlPatterns = "/visualizza")
@@ -29,13 +30,13 @@ public class SpesaVisualizzaServlet extends HttpServlet {
 
     @Inject
     SpesaService spesaService;
-    
+
     @Inject
     CategoriaService categoriaService;
 
     @Inject
     LoggedFilter filtro;
-      
+
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
@@ -48,25 +49,28 @@ public class SpesaVisualizzaServlet extends HttpServlet {
         System.out.println("destroy().. crea..");
     }
 
-  
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        String cate=req.getParameter("categ");
-        
-        Categoria ca=categoriaService.findById(cate);
-        
-        filtro.setCategoriaScelta(ca);
-        System.out.println("categoriaScelta..."+filtro.getCategoriaScelta().getCategoria());
-        
-        System.out.println("Utente Loggato..."+filtro.getUtenteLogged());
-        
-        List<Spesa> spese=spesaService.findByCategoria();                
-        System.out.println("doPost() Visualizza lista spese..."+spese);
-        
-        resp.sendRedirect("visualizzaCategorie.jsp");                      
-        
+
+        String cate = req.getParameter("categ");
+
+        if (cate.equals("Tutti")) {
+            resp.sendRedirect("visualizzaSpese.jsp");
+        } else {
+
+            Categoria ca = categoriaService.findById(cate);
+
+            filtro.setCategoriaScelta(ca);
+            System.out.println("categoriaScelta..." + filtro.getCategoriaScelta().getCategoria());
+
+            System.out.println("Utente Loggato..." + filtro.getUtenteLogged());
+
+            List<Spesa> spese = spesaService.findByCategoria();
+            System.out.println("doPost() Visualizza lista spese..." + spese);
+
+            resp.sendRedirect("visualizzaCategorie.jsp");
+        }
+
     }
-        
 
 }
