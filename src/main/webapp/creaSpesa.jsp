@@ -27,7 +27,7 @@
             <form action="crea" method="POST">
                 <label for="cate">Categoria</label> &nbsp;
 
-                <select id="cate" name="cate">                     
+                <select id="cate" name="cate">                        
                     <c:forEach items="${categoriaService.findAll()}" var="cate">                                   
                         <option><c:out value="${cate.categoria}"/></option>                                                    
                     </c:forEach>

@@ -25,55 +25,38 @@
 
             <h2 style="text-align: center"> Ecco i tuoi movimenti</h2>
             <br>
-
-            <label>Scegli come vuoi visualizzare i tuoi movimenti</label>
-
-            <select id="visualizzazione">
-                <option value="all">Tutti</option>
-                <option value="cate">Per categoria</option>
-            </select>
-
-            <select id="categ">
-                <option value="">Scegli la categoria</option>
-                <c:forEach items="${categoriaService.findAll()}" var="cate">
-                    < option ><c:out value="${cate.categoria}"/> < /option>                                            
-                </c:forEach>
-            </select>
-
-            <!--<c:if></c:if>-->
             
+            <div id="scelta">
+                <label>Scegli di visualizzare per categoria</label>
+                <form action="visualizza" method="POST">
+                    <select id="categ" name="categ">                    
+                        <c:forEach items="${categoriaService.findAll()}" var="cate">
+                            <option><c:out value="${cate.categoria}"/> </option>                                            
+                        </c:forEach>
+                    </select>
+                    <input type="submit" value="VISUALIZZA">
+                </form>
+
+            </div>
+
+            <br><br>
             
             <table>                
-                <th>ID</th>
                 <th>Categoria</th>
                 <th>Data</th>
                 <th>Importo</th>
                 <th>Descrizione</th>                
-                    <c:forEach items="${spesaService.findByUser()}" var="spe">
+                <c:forEach items="${spesaService.findByUser()}" var="spe">
                     <tr>  <!-- spe. e poi devi utilizzare le variabili con il nome che hanno sulle Entity, non sul db -->
-                        <td><c:out value="${spe.id}"/></td>
                         <td><c:out value="${spe.categoria.categoria}"/></td>
                         <td><c:out value="${spe.dataSalvato}"/></td>
                         <td><c:out value="${spe.importo}"/></td>
                         <td><c:out value="${spe.descrizione}"/></td>
                     </tr>       
                 </c:forEach>
-            </table>          
+            </table>             
 
         </div>        
-
-        <script>
-
-            $("#visualizzazione").change(function () {
-
-                $("#categ option").remove();
-
-
-
-            });
-
-        </script>
-
 
     </body>
 </html>

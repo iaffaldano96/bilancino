@@ -31,7 +31,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = Spesa.FIND_BY_USER,
             query = "select s from Spesa s where s.utente= :utente"),
     @NamedQuery(name = Spesa.FIND_BY_CATEGORIA,
-            query = "select s from Spesa s where s.categoria= :categoria"),
+            query = "select s from Spesa s where s.categoria= :categoria  AND s.utente= :utente"),
     @NamedQuery(name = Spesa.FIND_BY_DATA,
             query = "SELECT s FROM Spesa s where s.dataSalvato= :data_creato")
 })

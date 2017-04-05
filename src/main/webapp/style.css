@@ -42,9 +42,16 @@ h1{
     margin: auto;
     border-spacing: 10px;        
 }    
-#conteVisuSpese table td{
+table td{
     border: solid 1px lightgrey;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px grey;
     text-align: center
-}    
+} 
+
+#scelta{
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+}
+

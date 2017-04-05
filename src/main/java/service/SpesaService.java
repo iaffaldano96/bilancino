@@ -5,6 +5,7 @@
  */
 package service;
 
+import entity.Categoria;
 import entity.Spesa;
 import entity.Utente;
 import java.util.Date;
@@ -25,8 +26,8 @@ import javax.persistence.PersistenceContext;
 public class SpesaService {
     
     @Inject
-    LoggedFilter utenteLogged;
-    
+    LoggedFilter filtro;
+
     @PersistenceContext
     private EntityManager em;
     
@@ -39,12 +40,14 @@ public class SpesaService {
     }
     
     public List<Spesa> findByUser(){
-        Utente u=utenteLogged.getUtenteLogged();
+        Utente u=filtro.getUtenteLogged();
         return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("utente", u).getResultList();
     }
     
-    public List<Spesa> findByCategoria(String cate){
-        return em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", cate).getResultList();
+    public List<Spesa> findByCategoria(){
+        Utente u=filtro.getUtenteLogged();
+        Categoria cate=filtro.getCategoriaScelta();
+        return em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", cate).setParameter("utente", u).getResultList();
     }
     
     public List<Spesa> findByData(Date data){

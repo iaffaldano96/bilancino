@@ -5,6 +5,7 @@
  */
 package service;
 
+import entity.Categoria;
 import entity.Utente;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -24,6 +25,16 @@ public class LoggedFilter implements Serializable{
 
     public void setUtenteLogged(Utente utenteLogged) {
         this.utenteLogged = utenteLogged;
+    }
+    
+    private Categoria categoriaScelta;
+
+    public Categoria getCategoriaScelta() {
+        return categoriaScelta;
+    }
+
+    public void setCategoriaScelta(Categoria categoriaScelta) {
+        this.categoriaScelta = categoriaScelta;
     }
     
     
