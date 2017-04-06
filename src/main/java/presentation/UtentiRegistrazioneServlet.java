@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.LoggedFilter;
 import service.UtenteService;
 
 /**
@@ -25,6 +26,9 @@ public class UtentiRegistrazioneServlet extends HttpServlet {
     @Inject
     UtenteService utenteService;
 
+    @Inject
+    LoggedFilter filtro;
+    
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
@@ -53,14 +57,15 @@ public class UtentiRegistrazioneServlet extends HttpServlet {
             Utente find = utenteService.findUser(user);
 
             if (find != null) {
-                System.out.println("Username già esistente...");
+                System.out.println("Username già esistente...");                
                 resp.sendRedirect("registrazione.jsp");
             }
 
             Utente ute = new Utente(user, pass, email);
             utenteService.save(ute);
+            filtro.setUtenteLogged(ute);
             System.out.println("doPostRegistrazione va bene...  " + user + " - " + pass + " - " + email);
-            resp.sendRedirect("login.jsp");
+            resp.sendRedirect("home.jsp");
         }
     }
 

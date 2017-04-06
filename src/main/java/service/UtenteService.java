@@ -17,7 +17,6 @@ import javax.persistence.PersistenceContext;
  *
  * @author tss
  */
-
 @Stateless
 @Named("utenteService")
 public class UtenteService {
@@ -34,38 +33,39 @@ public class UtenteService {
     }
 
     public Utente findById(Long id) {
-        Utente trovato = em.createNamedQuery(Utente.FIND_BY_ID,Utente.class)
-                .setParameter("id_utente", id).getSingleResult();
-        return trovato;
+        List<Utente> ute = em.createNamedQuery(Utente.FIND_BY_ID, Utente.class)
+                .setParameter("id_utente", id).getResultList();
+        if (ute.isEmpty()) {
+            return null;
+        }
+        return ute.get(0);
     }
 
     public Utente findByUserEPsw(String usr, String psw) {
-        Utente result = null;
-        try {
-            result = em.createNamedQuery(Utente.FIND_BY_USER_PSW, Utente.class)
-                    .setParameter("usr", usr).setParameter("psw", psw).getSingleResult();
-        } catch (NoResultException ex) { // errore ingnorato dato che non fa niente
+        List<Utente> ute = em.createNamedQuery(Utente.FIND_BY_USER_PSW, Utente.class)
+                .setParameter("usr", usr).setParameter("psw", psw).getResultList();
+        if (ute.isEmpty()) {
+            return null;
         }
-        return result;
-    }
-    
-    public Utente findUser(String usr){
-        Utente result= null;
-        try {
-            result = em.createNamedQuery(Utente.FIND_USER, Utente.class)
-                    .setParameter("usr", usr).getSingleResult();
-        } catch (NoResultException ex) { // errore ingnorato dato che non fa niente
-        }
-        return result;
+        return ute.get(0);
     }
 
-    public void remove(Utente u) {        
+    public Utente findUser(String usr) {
+        List<Utente> ute = em.createNamedQuery(Utente.FIND_USER, Utente.class)
+                .setParameter("usr", usr).getResultList();
+        if (ute.isEmpty()) {
+            return null;
+        }
+        return ute.get(0);
+    }
+
+    public void remove(Utente u) {
         em.remove(u);
     }
 
     public void delete(Long id) {
-       Utente trovato = em.createNamedQuery(Utente.FIND_BY_ID,Utente.class)
-                .setParameter("id_utente", id).getSingleResult();         
-        em.remove(trovato);
+        List<Utente> ute = em.createNamedQuery(Utente.FIND_BY_ID, Utente.class)
+                .setParameter("id_utente", id).getResultList();
+        em.remove(ute.get(0));
     }
 }

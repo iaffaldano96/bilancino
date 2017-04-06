@@ -32,7 +32,10 @@ public class CategoriaService {
     }
     
     public Categoria findById(String categoria){
-        return em.createNamedQuery(Categoria.FIND_BY_ID,Categoria.class).setParameter("categoria", categoria).getSingleResult();
+        List<Categoria> ca= em.createNamedQuery(Categoria.FIND_BY_ID,Categoria.class).setParameter("categoria", categoria).getResultList();
+        if(ca.isEmpty())
+            return null;
+        return  ca.get(0);
     }
     
 }

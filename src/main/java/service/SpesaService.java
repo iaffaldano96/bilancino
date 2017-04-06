@@ -31,12 +31,18 @@ public class SpesaService {
     @PersistenceContext
     private EntityManager em;
     
+    @Inject
+    CategoriaService categoriaService;
+    
     public Spesa save(Spesa tosave){
         return em.merge(tosave);
     }
     
     public Spesa findById(Long id){
-        return em.createNamedQuery(Spesa.FIND_BY_ID, Spesa.class).setParameter("id_spesa", id).getSingleResult();
+        List<Spesa> spe= em.createNamedQuery(Spesa.FIND_BY_ID, Spesa.class).setParameter("id_spesa", id).getResultList();
+        if(spe.isEmpty())
+            return null;
+        return spe.get(0);
     }
     
     public List<Spesa> findByUser(){
@@ -44,9 +50,11 @@ public class SpesaService {
         return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("utente", u).getResultList();
     }
     
-    public List<Spesa> findByCategoria(Categoria cate){
+    public List<Spesa> findByCategoria(String cate){
+        Categoria c = categoriaService.findById(cate);
+  
         Utente u=filtro.getUtenteLogged();       
-        return em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", cate).setParameter("utente", u).getResultList();
+        return em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", c).setParameter("utente", u).getResultList();
     }
     
     public List<Spesa> findByData(Date data){

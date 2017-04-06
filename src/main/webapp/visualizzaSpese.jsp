@@ -30,12 +30,12 @@
             <h2 style="text-align: center"> Ecco i tuoi movimenti</h2>
             <br>
             <div id="scelta">
-                <label>Scegli di visualizzare per categoria</label>
+                <label>Scegli come visualizzare i tuoi movimenti</label>
 
                 <form action="visualizzaSpese.jsp" method="GET">
 
                     <select id="categ" name="categ">   
-                        <option >Tutti</option>
+                        <option value="Tutti">Tutti</option>
 
                         <c:forEach items="${categoriaService.findAll()}" var="cate">
                             <c:if test="${param.categ eq cate.categoria}">
@@ -52,9 +52,9 @@
 
             </div>
 
-            <br><br>
+            <br><br>   
 
-            <c:if test="${param.categ eq "Tutti"}">
+            <c:if test="${param.categ == 'Tutti' }">
                 <table>                
                     <th>Categoria</th>
                     <th>Data</th>
@@ -71,21 +71,39 @@
                 </table>  
             </c:if>
 
+            <c:if test="${param.categ != 'Tutti'}">
+                <table>                
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Importo</th>
+                    <th>Descrizione</th>                
+                        <c:forEach items="${spesaService.findByCategoria(param.categ)}" var="sp">
+                        <tr> 
+                            <td><c:out value="${sp.categoria.categoria}"/></td>
+                            <td><c:out value="${sp.dataSalvato}"/></td>
+                            <td><c:out value="${sp.importo}"/></td>
+                            <td><c:out value="${sp.descrizione}"/></td>
+                        </tr>       
+                    </c:forEach>
+                </table>             
+            </div>  
+        </c:if> 
 
 
-        </div>        
 
-        <script>
+    </div>        
 
-            $(".link").mouseover(function () {
-                $(".link").css("border-color", "black");
-            });
+    <script>
 
-            $(".link").mouseleave(function () {
-                $(".link").css("border-color", "dimgray");
-            });
+        $(".link").mouseover(function () {
+            $(".link").css("border-color", "black");
+        });
 
-        </script>                        
+        $(".link").mouseleave(function () {
+            $(".link").css("border-color", "dimgray");
+        });
 
-    </body>
+    </script>                        
+
+</body>
 </html>
