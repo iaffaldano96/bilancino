@@ -20,41 +20,42 @@
         <h1> Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>     
 
+        <div id="conteVisuSpese">
 
-        <h2 style="text-align: center"> Ecco i tuoi movimenti</h2>
-        <br>
+            <h2 style="text-align: center"> Ecco i tuoi movimenti</h2>
+            <br>
 
-        <div id="scelta">
-            <label>Scegli come visualizzare i tuoi movimenti</label>
-            <form action="visualizza" method="POST">
-                <select id="categ" name="categ">  
-                    <option>Tutti</option>
-                    <c:forEach items="${categoriaService.findAll()}" var="cate">
-                        <option><c:out value="${cate.categoria}"/> </option>                                            
-                    </c:forEach>
-                </select>
-                <input type="submit" value="VISUALIZZA">
-            </form>
+            <div id="scelta">
+                <label>Scegli come visualizzare i tuoi movimenti</label>
+                <form action="visualizza" method="POST">
+                    <select id="categ" name="categ">  
+                        <option>Tutti</option>
+                        <c:forEach items="${categoriaService.findAll()}" var="cate">
+                            <option><c:out value="${cate.categoria}"/> </option>                                            
+                        </c:forEach>
+                    </select>
+                    <input type="submit" value="VISUALIZZA">
+                </form>
 
-        </div>
+            </div>
 
-        <br><br>
+            <br><br>
 
 
-        <table>                
-            <th>Categoria</th>
-            <th>Data</th>
-            <th>Importo</th>
-            <th>Descrizione</th>                
-                <c:forEach items="${spesaService.findByCategoria()}" var="sp">
-                <tr> 
-                    <td><c:out value="${sp.categoria.categoria}"/></td>
-                    <td><c:out value="${sp.dataSalvato}"/></td>
-                    <td><c:out value="${sp.importo}"/></td>
-                    <td><c:out value="${sp.descrizione}"/></td>
-                </tr>       
-            </c:forEach>
-        </table>             
-
+            <table>                
+                <th>Categoria</th>
+                <th>Data</th>
+                <th>Importo</th>
+                <th>Descrizione</th>                
+                    <c:forEach items="${spesaService.findByCategoria()}" var="sp">
+                    <tr> 
+                        <td><c:out value="${sp.categoria.categoria}"/></td>
+                        <td><c:out value="${sp.dataSalvato}"/></td>
+                        <td><c:out value="${sp.importo}"/></td>
+                        <td><c:out value="${sp.descrizione}"/></td>
+                    </tr>       
+                </c:forEach>
+            </table>             
+        </div>  
     </body>
 </html>

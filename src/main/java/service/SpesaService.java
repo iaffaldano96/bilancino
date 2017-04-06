@@ -44,9 +44,8 @@ public class SpesaService {
         return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("utente", u).getResultList();
     }
     
-    public List<Spesa> findByCategoria(){
-        Utente u=filtro.getUtenteLogged();
-        Categoria cate=filtro.getCategoriaScelta();
+    public List<Spesa> findByCategoria(Categoria cate){
+        Utente u=filtro.getUtenteLogged();       
         return em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", cate).setParameter("utente", u).getResultList();
     }
     

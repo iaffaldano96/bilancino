@@ -23,15 +23,28 @@
 
         <div id="conteVisuSpese">
 
+            <a href="home.jsp">
+                <div class="link">←</div>
+            </a>
+
             <h2 style="text-align: center"> Ecco i tuoi movimenti</h2>
             <br>
-            
             <div id="scelta">
                 <label>Scegli di visualizzare per categoria</label>
-                <form action="visualizza" method="POST">
-                    <select id="categ" name="categ">                    
+
+                <form action="visualizzaSpese.jsp" method="GET">
+
+                    <select id="categ" name="categ">   
+                        <option >Tutti</option>
+
                         <c:forEach items="${categoriaService.findAll()}" var="cate">
-                            <option><c:out value="${cate.categoria}"/> </option>                                            
+                            <c:if test="${param.categ eq cate.categoria}">
+                                <option selected><c:out value="${cate.categoria}"/> </option>     
+                            </c:if>
+
+                            <c:if test="${param.categ != cate.categoria}">
+                                <option><c:out value="${cate.categoria}"/> </option>     
+                            </c:if>    
                         </c:forEach>
                     </select>
                     <input type="submit" value="VISUALIZZA">
@@ -40,23 +53,39 @@
             </div>
 
             <br><br>
-            
-            <table>                
-                <th>Categoria</th>
-                <th>Data</th>
-                <th>Importo</th>
-                <th>Descrizione</th>                
-                <c:forEach items="${spesaService.findByUser()}" var="spe">
-                    <tr>  <!-- spe. e poi devi utilizzare le variabili con il nome che hanno sulle Entity, non sul db -->
-                        <td><c:out value="${spe.categoria.categoria}"/></td>
-                        <td><c:out value="${spe.dataSalvato}"/></td>
-                        <td><c:out value="${spe.importo}"/></td>
-                        <td><c:out value="${spe.descrizione}"/></td>
-                    </tr>       
-                </c:forEach>
-            </table>             
+
+            <c:if test="${param.categ eq "Tutti"}">
+                <table>                
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Importo</th>
+                    <th>Descrizione</th>                
+                        <c:forEach items="${spesaService.findByUser()}" var="spe">
+                        <tr>  <!-- spe. e poi devi utilizzare le variabili con il nome che hanno sulle Entity, non sul db -->
+                            <td><c:out value="${spe.categoria.categoria}"/></td>
+                            <td><c:out value="${spe.dataSalvato}"/></td>
+                            <td><c:out value="${spe.importo}"/></td>
+                            <td><c:out value="${spe.descrizione}"/></td>
+                        </tr>       
+                    </c:forEach>
+                </table>  
+            </c:if>
+
+
 
         </div>        
+
+        <script>
+
+            $(".link").mouseover(function () {
+                $(".link").css("border-color", "black");
+            });
+
+            $(".link").mouseleave(function () {
+                $(".link").css("border-color", "dimgray");
+            });
+
+        </script>                        
 
     </body>
 </html>

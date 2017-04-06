@@ -49,7 +49,7 @@ public class SpesaVisualizzaServlet extends HttpServlet {
         System.out.println("destroy().. crea..");
     }
 
-    @Override
+    /*@Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String cate = req.getParameter("categ");
@@ -67,10 +67,14 @@ public class SpesaVisualizzaServlet extends HttpServlet {
 
             List<Spesa> spese = spesaService.findByCategoria();
             System.out.println("doPost() Visualizza lista spese..." + spese);
-
-            resp.sendRedirect("visualizzaCategorie.jsp");
+            
+            
+            if(spese.isEmpty())
+                resp.sendRedirect("visualizza.jsp");
+            else    
+                resp.sendRedirect("visualizzaCategorie.jsp");
         }
 
-    }
+    }*/
 
 }
