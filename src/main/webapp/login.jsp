@@ -21,18 +21,22 @@
         <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
 
-        <h2>Inserisci i dati </h2>
+        <div id="login">
 
-        <form action="login" method="POST">
-            <label for="usr">Username:</label> &nbsp;
-            <input type="text"  name="usr" id="usr"><br><br>
+            <h2>Inserisci i dati </h2>
 
-            <label for="psw">Password:</label>&nbsp;&nbsp;
-            <input type="password" name="psw" id="psw"><br><br>
+            <form action="login" method="POST">
+                <label for="usr">Username:</label> &nbsp;
+                <input type="text"  name="usr" id="usr"><br><br>
 
-            <input type="button" id="cmdAnn" value="Annulla">   
-            <input type="submit" id="cmdSalva" value="Login">  
-        </form>
+                <label for="psw">Password:</label>&nbsp;&nbsp;
+                <input type="password" name="psw" id="psw"><br><br>
+
+                <input type="button" id="cmdAnn" value="Annulla">   
+                <input type="submit" id="cmdSalva" value="Login">  
+            </form>
+
+        </div>
         <script>
 
             $("#cmdAnn").click(function () {
@@ -41,9 +45,9 @@
                     $("#usr").val("");
                     $("#psw").val("");
                 }
-                
-            });                       
-            
+
+            });
+
         </script>   
     </body>
 </html>

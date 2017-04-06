@@ -54,7 +54,11 @@ public class SpesaService {
         Categoria c = categoriaService.findById(cate);
   
         Utente u=filtro.getUtenteLogged();       
-        return em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", c).setParameter("utente", u).getResultList();
+        List<Spesa> sp= em.createNamedQuery(Spesa.FIND_BY_CATEGORIA, Spesa.class).setParameter("categoria", c).setParameter("utente", u).getResultList();
+        if(sp.isEmpty())
+            return null;
+        else
+            return sp;
     }
     
     public List<Spesa> findByData(Date data){

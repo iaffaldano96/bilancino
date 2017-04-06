@@ -11,7 +11,7 @@ and open the template in the editor.
     display: inline-block; 
     position: absolute;
     top: 300px;
-    left: 637px;
+    left: 680px;
     font-size: 45px;  
     height: 30px;
     text-align: center;
@@ -22,14 +22,35 @@ and open the template in the editor.
 }
 .link a{color: #fff;} 
 
+.link2{
+    display: inline-block; 
+    position: absolute;
+    top: 300px;
+    left: 1100px;
+    font-size: 25px;  
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: lightgrey;
+    border-radius: 10px;
+    border: solid 3px dimgray;
+    padding-left: 5px;
+}
+body{
+    background-color:bisque;
+}
+body td{
+    background-color: #fff;
+}
 #autenticazione{
     float: right;
-    font-size: 30px;
+    font-size: 30px;     
 }
 #pulsanti{
     margin: auto;
     width: 480px;
-    height: 40px;    
+    height: 40px;   
+    margin-left: 800px;
 }
 #pulsanti input{
     border-radius: 35px;
@@ -38,14 +59,30 @@ and open the template in the editor.
 h1{
     font-size: 35px;
     color: darkmagenta;
-    text-align: center
+    text-align: center;  
+    padding-left: 50px;
 }
-
+#login label,#registrazione label{
+    background-color: lightgray;
+}
+#login{
+    width: 215px;
+    height: 500px;
+    margin: auto;
+    font-size: 20px;
+}
+#registrazione{
+    width: 215px;
+    height: 500px;
+    margin: auto;
+    font-size: 20px; 
+}
 #conteCreaSpesa{
     width: 215px;
     height: 500px;
     margin: auto;
-    font-size: 20px
+    font-size: 20px;
+    margin-left: 800px;    
 }
 
 #conteVisuSpese{

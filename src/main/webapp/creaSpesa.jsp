@@ -22,6 +22,11 @@
         <br><br><br><br><br><br><br><br><br><br>
 
         <div id="conteCreaSpesa">
+            
+            <a href="home.jsp">
+                <div class="link">←</div>
+            </a>
+            
             <h2>Inserisci la spesa </h2>
 
             <form action="crea" method="POST">
@@ -44,6 +49,10 @@
                 <input type="button" id="cmdAnn" value="Annulla">   
                 <input type="submit" id="cmdSalva" value="Salva">  
             </form>
+                        
+            <a href="visualizzaSpese.jsp">
+                <div class="link2">Visualizza Spese →</div>
+            </a>
         </div>
         <script>
 
@@ -55,6 +64,15 @@
                     $("#descri").val("");
                 }
             });
+            
+            $(".link2").mouseover(function () {
+                $(".link2").css("border-color", "black");
+            });
+
+            $(".link2").mouseleave(function () {
+                $(".link2").css("border-color", "dimgray");
+            });
+
 
         </script>   
 

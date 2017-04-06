@@ -21,21 +21,24 @@
         <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
 
-        <h2>Inserisci i dati </h2>
+        <div id="registrazione">
 
-        <form action="registrazione" method="POST">
-            <label for="usr">Username:</label> &nbsp;
-            <input type="text" id="usr" name="usr"><br><br>
+            <h2>Inserisci i dati </h2>
 
-            <label for="psw">Password:</label>&nbsp;&nbsp;
-            <input type="text" id="psw" name="psw"><br><br>
-            
-            <label for="email">Email</label>&nbsp;&nbsp;
-            <input type="text" id="email" name="email"><br><br>
+            <form action="registrazione" method="POST">
+                <label for="usr">Username:</label> &nbsp;
+                <input type="text" id="usr" name="usr"><br><br>
 
-            <input type="button" id="cmdAnn" value="Annulla">   
-            <input type="submit" id="cmdSalva" value="Registrati">  
-        </form>
+                <label for="psw">Password:</label>&nbsp;&nbsp;
+                <input type="text" id="psw" name="psw"><br><br>
+
+                <label for="email">Email</label>&nbsp;&nbsp;
+                <input type="text" id="email" name="email"><br><br>
+
+                <input type="button" id="cmdAnn" value="Annulla">   
+                <input type="submit" id="cmdSalva" value="Registrati">  
+            </form>
+        </div>
         <script>
 
             $("#cmdAnn").click(function () {

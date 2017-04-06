@@ -53,57 +53,68 @@
             </div>
 
             <br><br>   
+            <c:choose>                
 
-            <c:if test="${param.categ == 'Tutti' }">
-                <table>                
-                    <th>Categoria</th>
-                    <th>Data</th>
-                    <th>Importo</th>
-                    <th>Descrizione</th>                
-                        <c:forEach items="${spesaService.findByUser()}" var="spe">
-                        <tr>  <!-- spe. e poi devi utilizzare le variabili con il nome che hanno sulle Entity, non sul db -->
-                            <td><c:out value="${spe.categoria.categoria}"/></td>
-                            <td><c:out value="${spe.dataSalvato}"/></td>
-                            <td><c:out value="${spe.importo}"/></td>
-                            <td><c:out value="${spe.descrizione}"/></td>
-                        </tr>       
-                    </c:forEach>
-                </table>  
-            </c:if>
+                <c:when test="${param.categ == 'Tutti' }">
+                    <table>                
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Importo</th>
+                        <th>Descrizione</th>                
+                            <c:forEach items="${spesaService.findByUser()}" var="spe">                            
+                            <tr>  <!-- spe. e poi devi utilizzare le variabili con il nome che hanno sulle Entity, non sul db -->
+                                <td><c:out value="${spe.categoria.categoria}"/></td>
+                                <td><c:out value="${spe.dataSalvato}"/></td>
+                                <td><c:out value="${spe.importo}"/></td>
+                                <td><c:out value="${spe.descrizione}"/></td>
+                            </tr> 
 
-            <c:if test="${param.categ != 'Tutti'}">
-                <table>                
-                    <th>Categoria</th>
-                    <th>Data</th>
-                    <th>Importo</th>
-                    <th>Descrizione</th>                
-                        <c:forEach items="${spesaService.findByCategoria(param.categ)}" var="sp">
-                        <tr> 
-                            <td><c:out value="${sp.categoria.categoria}"/></td>
-                            <td><c:out value="${sp.dataSalvato}"/></td>
-                            <td><c:out value="${sp.importo}"/></td>
-                            <td><c:out value="${sp.descrizione}"/></td>
-                        </tr>       
-                    </c:forEach>
-                </table>             
-            </div>  
-        </c:if> 
+                        </c:forEach>
+                    </table>  
+                </c:when>
 
+                <c:when test="${param.categ != 'Tutti' and param.categ !=null}">
 
+                    <c:if test="${spesaService.findByCategoria(param.categ) eq null}">
+                        <div style="text-align: center">Nessun movimento in questa Categoria</div>
+                    </c:if>
 
-    </div>        
+                    <c:if test="${not empty spesaService.findByCategoria(param.categ)}">
+                        <table>                
+                            <th>Categoria</th>
+                            <th>Data</th>
+                            <th>Importo</th>
+                            <th>Descrizione</th>       
+                            <c:forEach items="${spesaService.findByCategoria(param.categ)}" var="sp">
+                                <tr> 
+                                    <td><c:out value="${sp.categoria.categoria}"/></td>
+                                    <td><c:out value="${sp.dataSalvato}"/></td>
+                                    <td><c:out value="${sp.importo}"/></td>
+                                    <td><c:out value="${sp.descrizione}"/></td>
+                                </tr>   
+                            </c:forEach>                        
+                        </table> 
+                    </c:if>
+                </c:when> 
 
-    <script>
+                <c:otherwise>                   
+                    <div style="text-align: center"></div>
+                </c:otherwise>
+            </c:choose>
 
-        $(".link").mouseover(function () {
-            $(".link").css("border-color", "black");
-        });
+        </div>        
 
-        $(".link").mouseleave(function () {
-            $(".link").css("border-color", "dimgray");
-        });
+        <script>
 
-    </script>                        
+            $(".link").mouseover(function () {
+                $(".link").css("border-color", "black");
+            });
 
-</body>
+            $(".link").mouseleave(function () {
+                $(".link").css("border-color", "dimgray");
+            });
+
+        </script>                        
+
+    </body>
 </html>
