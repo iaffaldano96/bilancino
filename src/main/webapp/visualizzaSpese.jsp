@@ -21,6 +21,9 @@
         <h1> Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
 
+        <div id="orologio">            
+        </div>
+        
         <div id="conteVisuSpese">
 
             <a href="home.jsp">
@@ -49,13 +52,10 @@
                     </select>
                     <input type="submit" value="VISUALIZZA">
                 </form>
-
             </div>
-
             <br><br>   
-            <c:choose>                
-
-                <c:when test="${param.categ == 'Tutti' }">
+                           
+                <c:if test="${param.categ == 'Tutti' or param.categ eq null}">
                     <table>                
                         <th>Categoria</th>
                         <th>Data</th>
@@ -68,12 +68,11 @@
                                 <td><c:out value="${spe.importo}"/></td>
                                 <td><c:out value="${spe.descrizione}"/></td>
                             </tr> 
-
                         </c:forEach>
                     </table>  
-                </c:when>
+                </c:if>
 
-                <c:when test="${param.categ != 'Tutti' and param.categ !=null}">
+                <c:if test="${param.categ != 'Tutti' and param.categ !=null}">
 
                     <c:if test="${spesaService.findByCategoria(param.categ) eq null}">
                         <div style="text-align: center">Nessun movimento in questa Categoria</div>
@@ -95,12 +94,7 @@
                             </c:forEach>                        
                         </table> 
                     </c:if>
-                </c:when> 
-
-                <c:otherwise>                   
-                    <div style="text-align: center"></div>
-                </c:otherwise>
-            </c:choose>
+                </c:if> 
 
         </div>        
 

@@ -49,14 +49,14 @@ public class UtentiLoginServlet extends HttpServlet {
         String pass = req.getParameter("psw");
 
         if (user.equals("") || pass.equals("")) {
-            System.out.println("Dati nulli");
+            System.out.println("Dati nulli");           
             resp.sendRedirect("login.jsp");
         } else {
 
             Utente find = utenteService.findByUserEPsw(user, pass);
 
             if (find == null) {
-                System.out.println("Utente non trovato");
+                System.out.println("Utente non trovato");               
                 resp.sendRedirect("login.jsp");
             } else {
 

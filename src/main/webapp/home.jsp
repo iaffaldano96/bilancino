@@ -9,16 +9,24 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="jquery-3.1.1.js" type="text/javascript"></script>
+        <script src="jquery-ui.min.js" type="text/javascript"></script>
+        <link href="jquery-ui.min.css" rel="stylesheet" type="text/css"/>        
+        <link href="jquery-ui.structure.min.css" rel="stylesheet" type="text/css"/>
+        <link href="jquery-ui.theme.min.css" rel="stylesheet" type="text/css"/>        
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>Home</title>            
     </head>
     <body>
         <div id="autenticazione">
-             <a href="index.html">Logout</a>
+            <a href="index.html">Logout</a>
         </div>
         <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
+        <div id="orologio">            
+        </div>
+
         <div id="pulsanti">
             <form action="visualizzaSpese.jsp">
                 <input type="submit"  id="visualizza" value="Visualizza le Spese">
@@ -28,6 +36,6 @@
                 <input type="submit"  id="inserisci" value="Inserisci una Spesa">
             </form>
         </div>
-
+        
     </body>
 </html>

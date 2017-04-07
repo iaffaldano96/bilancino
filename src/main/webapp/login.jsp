@@ -8,8 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <link href="style.css" rel="stylesheet" type="text/css"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
         <script src="jquery-3.1.1.js" type="text/javascript"></script>
         <title>Login</title>
     </head>
@@ -20,7 +21,7 @@
         </div>
         <h1>Bilancino Personale</h1>
         <br><br><br><br><br><br><br><br><br><br>
-
+        
         <div id="login">
 
             <h2>Inserisci i dati </h2>
@@ -39,6 +40,10 @@
         </div>
         <script>
 
+            /*$("#cmdSalva").click(function () {
+                if ($("#usr").val().equals("")  || $("#usr").val().equals("") )
+                    alert(Devi inserire tutti i campi correttamente!);
+            });*/
             $("#cmdAnn").click(function () {
                 var s = confirm("Sicuro di voler cancellare?");
                 if (s) {
@@ -48,6 +53,6 @@
 
             });
 
-        </script>   
+ </script>   
     </body>
 </html>

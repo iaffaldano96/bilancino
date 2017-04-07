@@ -22,11 +22,14 @@ and open the template in the editor.
 }
 .link a{color: #fff;} 
 
+textarea#descri{
+    height: 40px;
+}
 .link2{
     display: inline-block; 
     position: absolute;
     top: 300px;
-    left: 1100px;
+    left: 1120px;
     font-size: 25px;  
     height: 30px;
     text-align: center;
@@ -38,6 +41,16 @@ and open the template in the editor.
 }
 body{
     background-color:bisque;
+}
+#orologio{
+    width: 200px; height: 200px;
+    border-radius: 100px;
+    border: solid 4px grey;
+    background-image: url('image.jpg');
+    background-size: 200px 200px;
+    position: absolute;
+    top: 100px;
+    left: 400px;
 }
 body td{
     background-color: #fff;
@@ -65,25 +78,27 @@ h1{
 #login label,#registrazione label{
     background-color: lightgray;
 }
-#login{
+#login, #registrazione{
     width: 215px;
     height: 500px;
     margin: auto;
     font-size: 20px;
+    border: outset 6px blue;
+    border-radius: 5px;
 }
-#registrazione{
-    width: 215px;
-    height: 500px;
-    margin: auto;
-    font-size: 20px; 
-}
+
 #conteCreaSpesa{
-    width: 215px;
-    height: 500px;
+    padding-left: 25px;
+    width: 250px;
+    height: 350px;
     margin: auto;
     font-size: 20px;
-    margin-left: 800px;    
+    margin-left: 800px;  
+    border: outset 6px blue;   
 }
+#conteCreaSpesa h2{
+    padding-left: 5px;
+}   
 
 #conteVisuSpese{
     font-size: 20px;

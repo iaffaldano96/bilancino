@@ -46,18 +46,16 @@ public class SpesaCreaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String imp = req.getParameter("importo");
-        double importo = Double.parseDouble(imp);
-
         String descri = req.getParameter("descri");
-
         String cate = req.getParameter("cate");
 
-        if (imp.equals("") || cate.equals("")) {
+        if (imp.equals("")) {
             System.out.println("Dati vuoti");
             resp.sendRedirect("creaSpesa.jsp");
         } else {
             if(descri.equals(""))
                 descri="-";
+            double importo = Double.parseDouble(imp);
             Categoria catte =new Categoria(cate);
             Spesa spe = new Spesa(importo, catte,utenteLogged.getUtenteLogged(),descri);
             spesaService.save(spe);
