@@ -7,6 +7,12 @@ and open the template in the editor.
     Created on : 30-mar-2017, 11.11.17
     Author     : tss
 */
+.cancella{
+    border:solid 2px black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px grey;
+    text-align: center
+}  
 .link{
     display: inline-block; 
     position: absolute;
@@ -114,6 +120,12 @@ table td{
     box-shadow: 5px 5px 5px 5px grey;
     text-align: center
 } 
+table tr:hover{
+    background-color: lightgrey; 
+} 
+table td:hover{
+    font-size:22px;
+}
 
 #scelta{
     margin: auto;
