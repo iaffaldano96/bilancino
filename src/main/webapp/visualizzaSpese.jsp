@@ -67,6 +67,7 @@
                                 <td><c:out value="${spe.dataSalvato}"/></td>
                                 <td><c:out value="${spe.importo}"/></td>
                                 <td><c:out value="${spe.descrizione}"/></td>
+                                <td class="cancella"><input type="submit" value="X"></td>
                             </tr> 
                         </c:forEach>
                     </table>  
@@ -90,6 +91,7 @@
                                     <td><c:out value="${sp.dataSalvato}"/></td>
                                     <td><c:out value="${sp.importo}"/></td>
                                     <td><c:out value="${sp.descrizione}"/></td>
+                                    <td class="cancella"><input type="submit" value="X"></td>
                                 </tr>   
                             </c:forEach>                        
                         </table> 
