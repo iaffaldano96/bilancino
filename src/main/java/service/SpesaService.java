@@ -45,6 +45,11 @@ public class SpesaService {
         return spe.get(0);
     }
     
+    public Double totalByUser(){
+        double sum=findByUser().stream().mapToDouble(s -> s.getImporto()).sum();
+        return sum;
+    }
+    
     public List<Spesa> findByUser(){
         Utente u=filtro.getUtenteLogged();
         return em.createNamedQuery(Spesa.FIND_BY_USER, Spesa.class).setParameter("utente", u).getResultList();

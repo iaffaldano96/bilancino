@@ -10,9 +10,18 @@ and open the template in the editor.
 .cancella{
     border:solid 2px black;
     border-radius: 20px;
-    box-shadow: 5px 5px 5px 5px grey;
+    box-shadow: 3px 3px 3px 3px grey;
     text-align: center
-}  
+} 
+.cancella input{
+    border: none;
+    background-color: #fff;
+    border-radius: 20px;
+    font-size: 22px;
+} 
+.cancella input:hover{
+    background-color: lightgray; 
+}
 .link{
     display: inline-block; 
     position: absolute;
@@ -118,15 +127,12 @@ table td{
     border: solid 1px lightgrey;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px grey;
-    text-align: center
-} 
-table tr:hover{
-    background-color: lightgrey; 
+    text-align: center;
+    background-color: #fff;
 } 
 table td:hover{
-    font-size:22px;
-}
-
+    
+}    
 #scelta{
     margin: auto;
     text-align: center;
